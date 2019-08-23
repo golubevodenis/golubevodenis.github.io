@@ -1,1 +1,38 @@
-"hello world" 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+Test request.
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  ($ => {
+    console.log('start');
+    $.ajax({
+      type: 'POST',
+      contentType: 'application/json',
+      url: 'https://cscapp.vodafone.ua/eai_mob/start.swe?SWEExtSource=JSONConverter&SWEExtCmd=Execute',
+      data: JSON.stringify({
+        'requests': {
+          'getLinks': {}
+        },
+        'params': {
+          'version': '2.0.6',
+          'language': 'ru',
+          'source': 'android 8',
+          'token': '3F1CD86262E97E4C5805390A107F658D',
+          'manufacture': 'HUAWEI',
+          'childNumber': '',
+          'accessType': ''
+        }
+      }),
+      success: response => console.log(response)
+    });
+    console.log('stop');
+  })(jQuery);
+</script>
+</body>
+</html>
